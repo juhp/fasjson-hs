@@ -1,0 +1,4 @@
+resolver: lts-18.28
+extra-deps:
+  - curl-aeson-0.1.0.1
+  # - ../../haskell/curl-aeson

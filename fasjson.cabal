@@ -1,0 +1,73 @@
+name:                fasjson
+version:             0.1.0
+synopsis:            Fedora Account System API
+description:
+        Binding to the FASJSON web API.
+        <https://fasjson.fedoraproject.org/docs/v1/>
+license:             BSD3
+license-file:        LICENSE
+author:              Jens Petersen <juhpetersen@gmail.com>
+maintainer:          Jens Petersen <juhpetersen@gmail.com>
+copyright:           2022  Jens Petersen <juhpetersen@gmail.com>
+category:            Network
+homepage:            https://github.com/juhp/fasjson-hs
+bug-reports:         https://github.com/juhp/fasjson-hs/issues
+build-type:          Simple
+--  extra-doc-files:     README.md
+--                       ChangeLog.md
+cabal-version:       2.0
+tested-with:         GHC == 8.6.5
+                      || == 8.8.4
+                      || == 8.10.7
+                      || == 9.0.2
+
+source-repository head
+  type:                git
+  location:            https://github.com/juhp/fasjson-hs.git
+
+executable fasjson
+  main-is:             Main.hs
+--  other-modules:       Paths_fasjson
+  hs-source-dirs:      app
+  build-depends:       base < 5,
+                       fasjson
+  default-language:    Haskell2010
+  ghc-options:         -Wall
+  if impl(ghc >= 8.0)
+    ghc-options:       -Wcompat
+                       -Widentities
+                       -Wincomplete-uni-patterns
+                       -Wincomplete-record-updates
+                       -Wredundant-constraints
+  if impl(ghc >= 8.2)
+    ghc-options:       -fhide-source-paths
+  if impl(ghc >= 8.4)
+    ghc-options:       -Wmissing-export-lists
+                       -Wpartial-fields
+  if impl(ghc >= 8.10)
+    ghc-options:       -Wunused-packages
+
+library
+  build-depends:       base < 5,
+                       aeson,
+                       curl,
+                       curl-aeson,
+                       text
+  default-language:    Haskell2010
+  exposed-modules:     FASJSON
+  hs-source-dirs:      src
+
+  ghc-options:         -Wall
+  if impl(ghc >= 8.0)
+    ghc-options:       -Wcompat
+                       -Widentities
+                       -Wincomplete-uni-patterns
+                       -Wincomplete-record-updates
+                       -Wredundant-constraints
+  if impl(ghc >= 8.2)
+    ghc-options:       -fhide-source-paths
+  if impl(ghc >= 8.4)
+    ghc-options:       -Wmissing-export-lists
+                       -Wpartial-fields
+  if impl(ghc >= 8.10)
+    ghc-options:       -Wunused-packages
